@@ -1,0 +1,82 @@
+body{
+    background: #555;
+  }
+  /* 第一种css */
+/* .circle{
+    background: linear-gradient(to bottom, #ffffff 0%,#ffffff 50%,#000000 51%,#000000 93%,#000000 100%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin:auto;
+    position: relative;
+  }
+.left{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top:55px;
+    background: #000;
+  }
+.right{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top:55px;
+    right:0;
+    background: #fff;
+  }
+.left-small{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top:40px;
+    left:40px;
+    background: #fff;
+}
+.right-small{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top:40px;
+    left:40px;
+    background: #000;
+} */
+/* 第二种css */
+  #circle{
+    background: linear-gradient(to bottom, #ffffff 0%,#ffffff 50%,#000000 51%,#000000 93%,#000000 100%);
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin:auto;
+    position: relative;
+  }
+  #circle::before{
+    border: 40px solid white;
+    content:'';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position:absolute;
+    top: 50px;
+    right:0;
+      background: #000;
+  
+  }
+  #circle::after{
+    border: 40px solid black;
+    content:'';
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position:absolute;
+    top: 50px;
+    left:0;
+    background: #fff;
+  }
+  
+  
+  
