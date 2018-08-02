@@ -10,16 +10,26 @@ kbd{
     width: 4em;height: 4em;
     text-transform: uppercase;
     display: inline-block;
+    position: relative;
+}
+kbd > button{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+kbd:hover > button{
+    display: inline-block;
 }
 #keybord{
     display: inline-block;
 }
-#keybord > div:nth-child(2){
-    /* margin-left: 1em; */
+/* #keybord > div:nth-child(2){
+    margin-left: 1em;
 }
 #keybord > div:nth-child(3){
-    /* margin-left: 2em; */
-}
+    margin-left: 2em;
+} */
 main{
     text-align: center;
 }
