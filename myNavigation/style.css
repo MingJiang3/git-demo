@@ -1,17 +1,21 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-a{
-    text-decoration: none;
-}
-kbd{
-    border: 1px solid red;
-    width: 4em;height: 4em;
+*{margin: 0;padding: 0;}
+a{text-decoration: none;}
+kbd{  
     text-transform: uppercase;
-    display: inline-block;
     position: relative;
+    border: 1px solid #ececec;
+    width: 62px;   height: 50px;
+    border-radius: 8px;
+    background: linear-gradient(to bottom, #fefefe 0%,#f3f3f3 100%);
+    color: #9f9f9f;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    box-shadow: 0px 0px 3px 0px #c0c0c0, 1px 2px 1px 3px #7f7f7f;
+    margin: 10px;
+    font-size: 20px;
 }
+
 kbd > button{
     position: absolute;
     right: 0;
@@ -24,12 +28,12 @@ kbd:hover > button{
 #keybord{
     display: inline-block;
 }
-/* #keybord > div:nth-child(2){
+#keybord > div:nth-child(2){
     margin-left: 1em;
 }
 #keybord > div:nth-child(3){
     margin-left: 2em;
-} */
+}
 main{
     text-align: center;
 }
