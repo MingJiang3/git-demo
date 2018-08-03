@@ -13,7 +13,8 @@ kbd{
     display: inline-flex;
     box-shadow: 0px 0px 3px 0px #c0c0c0, 1px 2px 1px 3px #7f7f7f;
     margin: 10px;
-    font-size: 20px;
+    font-size: 19px;
+    font-family: helvetica;
 }
 
 kbd > button{
@@ -29,10 +30,10 @@ kbd:hover > button{
     display: inline-block;
 }
 #keybord > div:nth-child(2){
-    margin-left: 1em;
+    margin-left: -52px;
 }
 #keybord > div:nth-child(3){
-    margin-left: 2em;
+    margin-left: -132px;
 }
 main{
     text-align: center;
