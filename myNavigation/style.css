@@ -35,9 +35,33 @@ kbd:hover > button{
 #keybord > div:nth-child(3){
     margin-left: -132px;
 }
+body{
+    height: 100vh;
+    background: grey url(./wall.jpg) no-repeat center center;
+    background-size: cover;
+}
 main{
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
 }
 .wrapper{
     /* text-align: center; */
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+kbd img{
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 3px;
+    bottom: 3px
+}
+.text{
+    position: absolute;
+    left: 4px;
+    top: 4px;
 }

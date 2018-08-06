@@ -1,68 +1,112 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
+
 <head>
     <meta charset="UTF-8">
     <title>我的导航</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
     <header></header>
     <main>
-        <div class="wrapper"  id="keybord"></div>
+        <div class="wrapper" id="keybord"></div>
     </main>
     <footer></footer>
 </body>
 <script>
-    var keys = {
-        0:['q','w','e','r','t','y','u','i','o','p'],
-        1:['a','s','d','f','g','h','j','k','l'],
-        2:['z','x','c','v','b','n','m'],
-        length:3
-    }
-    var hash = {
-        'q' : 'qq.com','w' : 'weibo.com','e' : 'ele.me','r' : 'renren.com','t' : 'taobao.com',
-        'y' : 'youtube.com','u' : 'weibo.com','i' : 'iqiyi.com','o': 'weibo.com','p' : 'weibo.com'
-    }
-    var hashInLocalStorage = JSON.parse(localStorage.getItem('zzz') || 'null')
-    if(hashInLocalStorage){
-        hash = hashInLocalStorage
-    }
-    index = 0;
-    while(index < keys['length']){
-    div1 = document.createElement('div')
-    div1.className = 'row'
-    keybord.appendChild(div1)
-    row = keys[index]
-    index2 = 0
-    while(index2 < row['length']){
-        kbd1 = document.createElement('kbd')
-        kbd1.textContent = row[index2]
-        buttonX = document.createElement('button')
-        buttonX.textContent = 'edit'
-        buttonX.id = row[index2]
-        buttonX.onclick = function(qwewe){
-            key = qwewe.target.id
-            edit = prompt('自定义网址')
-            hash[key] = edit
-            localStorage.getItem('zzz',JSON.stringify(hash))
-            console.log(hash)
+    //1、初始化数据
+    var hashA = init();
+    var keys = hashA['keys']
+    var hash = hashA['hash']
+
+    //2、生成键盘
+    for (var index = 0; index < keys['length']; index = index + 1) {
+        var div1 = tag('div', { className: 'row' })
+
+        keybord.appendChild(div1)
+
+        var row = keys[index]
+        for (var index2 = 0; index2 < row['length']; index2 = index2 + 1) {
+            var span = tag('span', { className: 'text' })
+            span.textContent = row[index2]
+
+            var kbd1 = tag('kbd')
+
+            // span.className = 'text'
+            var buttonX = tag('button')
+            buttonX.textContent = 'edit'
+            buttonX.id = row[index2]
+            buttonX.onclick = function (qwewe) {
+                var button2 = qwewe['target']
+                var img2 = button2.previousSibling
+                var key = qwewe.target.id
+                var edit = prompt('自定义网址')
+                hash[key] = edit        //hash变更
+                img2.src = 'http://' + edit + '/favicon.ico'
+                img2.onerror = function (error) {
+                    error.target.src = "//i.loli.net/2018/08/06/5b67bcafa0d7a.png"
+                }
+                localStorage.getItem('zzz', JSON.stringify(hash))
+                // console.log(hash)
+            }
+
+            var img = tag('img')
+            if (hash[row[index2]]) {
+                img.src = "http://" + hash[row[index2]] + "/favicon.ico"
+            } else {
+                img.src = "//i.loli.net/2018/08/06/5b67bcafa0d7a.png"
+            }
+            img.onerror = function (error) {
+                error.target.src = "//i.loli.net/2018/08/06/5b67bcafa0d7a.png"
+            }
+
+            kbd1.appendChild(span)
+            kbd1.appendChild(img)
+            kbd1.appendChild(buttonX)
+            div1.appendChild(kbd1)
         }
-        kbd1.appendChild(buttonX)
-        div1.appendChild(kbd1)
-        index2 = index2 + 1
     }
-    index = index + 1
-    }
-    document.onkeypress = function(qwewe){
+
+    // 3、键盘监听
+    document.onkeypress = function (qwewe) {
         key = qwewe['key']      //获取用户按键
         website = hash[key]     //得到对应的网址 
         // location.href = 'http://' + website
-        window.open('http://' + website , '_blank')
+        window.open('http://' + website, '_blank')
     }
 
+    //工具
+    function tag(tagName, attributes) {
+        var element = document.createElement(tagName)
+        for (var key in attributes) {
+            element[key] = attributes[key]
+        }
+        return element
+    }
+    
+    function init() {
+        var keys = {
+            0: ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+            1: ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+            2: ['z', 'x', 'c', 'v', 'b', 'n', 'm'],
+            length: 3
+        }
+        var hash = {
+            'q': 'qq.com', 'w': 'weibo.com', 'e': 'ele.me', 'r': 'renren.com', 't': 'taobao.com',
+            'y': 'youtube.com', 'u': 'weibo.com', 'i': 'iqiyi.com', 'o': 'weibo.com', 'p': 'weibo.com'
+        }
 
-
-
-
+        //取出localStorage中zzz对应的hash
+        var hashInLocalStorage = JSON.parse(localStorage.getItem('zzz') || 'null')
+        if (hashInLocalStorage) {
+            hash = hashInLocalStorage
+        }
+        return{
+            "keys": keys,
+            "hash": hash
+        }
+    }
 </script>
+
 </html>
