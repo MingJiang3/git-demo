@@ -5,3 +5,8 @@
 body{
     margin: 0;
 }
+#eraser{
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+}
