@@ -6,13 +6,48 @@ window.onload = function () {
 
     //橡皮擦和画笔的切换。尽量不要用一个按钮做两件事
     var eraserEnabled = false
-    eraser.onclick = function () {
-        eraserEnabled = true
-        actions.className = 'actions x'
-    }
-    brush.onclick = function () {
+    pen.onclick = function(){
         eraserEnabled = false
-        actions.className = 'actions'
+        pen.classList.add('active')
+        eraser.classList.remove('active')
+    }
+    eraser.onclick = function(){
+        eraserEnabled = true
+        eraser.classList.add('active')
+        pen.classList.remove('active')
+    }
+    //颜色
+    black.onclick = function(){
+        context.fillStyle = 'black'
+        context.strokeStyle = 'black'
+        black.classList.add('active')
+        green.classList.remove('active')
+        blue.classList.remove('active')
+        red.classList.remove('active')
+    }
+    red.onclick = function(){
+        context.fillStyle = 'red'
+        context.strokeStyle = 'red'
+        red.classList.add('active')
+        green.classList.remove('active')
+        blue.classList.remove('active')
+        black.classList.remove('active')
+    }
+    green.onclick = function(){
+        context.fillStyle = 'green'
+        context.strokeStyle = 'green'
+        green.classList.add('active')
+        red.classList.remove('active')
+        blue.classList.remove('active')
+        black.classList.remove('active')
+    }
+    blue.onclick = function(){
+        context.fillStyle = 'blue'
+        context.strokeStyle = 'blue'
+        blue.classList.add('active')
+        green.classList.remove('active')
+        red.classList.remove('active')
+        black.classList.remove('active')
     }
     /* *************** */
     function autosetCanvasSize(canvas) {
@@ -102,10 +137,6 @@ window.onload = function () {
         context.closePath()
         context.lineWidth = 2
     }
-
-
-
-
 }
 
 

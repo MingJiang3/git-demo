@@ -1,5 +1,17 @@
+ol,li{
+    list-style: none;  
+}
+*{
+    margin: 0;
+}
+.icon{
+    width: 1em; height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
 #xxx{
-    background: grey;
+    background: white;
     display: block;
 }
 body{
@@ -7,15 +19,43 @@ body{
 }
 .actions{
     position: fixed;
-    bottom: 0px;
+    top: 10px;
     left: 0px;
 }
-.actions > #brush{
-    display: none;
+.actions > svg{
+    width: 35px;
+    height: 25px;
+    transition: all 0.3s;
+    margin-left:10px; 
 }
-.actions.x > #brush{
-    display: inline-block;
+.actions > svg.active{
+    fill: red;
+    transform: scale(1.2);
 }
-.actions.x > #eraser{
-    display: none;
+.colors{
+       position: fixed;
+       top: 47px;
+       left: -24px;
+}
+.colors > li{
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    margin: 10px 0;
+    transition: all 0.3s;
+}
+.colors > li.active{
+    transform: scale(1.2)
+}
+.colors > li.black{
+    background: #000;
+}
+.colors > li.red{
+    background: red;
+}
+.colors > li.green{
+    background: green;
+}
+.colors > li.blue{
+    background: blue;
 }
