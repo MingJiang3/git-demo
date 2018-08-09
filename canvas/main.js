@@ -4,7 +4,7 @@ window.onload = function () {
     autosetCanvasSize(yyy)
     listenToMouse(yyy)
 
-   //橡皮擦和画笔的切换。尽量不要用一个按钮做两件事
+    //橡皮擦和画笔的切换。尽量不要用一个按钮做两件事
     var eraserEnabled = false
     eraser.onclick = function () {
         eraserEnabled = true
@@ -27,35 +27,67 @@ window.onload = function () {
             yyy.height = pageHeight
         }
     }
+    var using = false
+    var lastPoint = { x: undefined, y: undefined }
     function listenToMouse(canvas) {
-        var using = false
-        var lastPoint = { x: undefined, y: undefined }
-        canvas.onmousedown = function (aaa) {
-            var x = aaa.clientX
-            var y = aaa.clientY
-            using = true
-            if (eraserEnabled) {
-                context.clearRect(x - 5, y - 5, 10, 10)
-            } else {
-                lastPoint = { 'x': x, 'y': y }
+        if (document.body.ontouchstart !== undefined) {     //特性检测
+            //触屏
+            canvas.ontouchstart = function (aaa) {
+                var x = aaa.touches[0].clientX      //获取手机端xy坐标
+                var y = aaa.touches[0].clientY
+                using = true
+                if (eraserEnabled) {
+                    context.clearRect(x - 5, y - 5, 10, 10)
+                } else {
+                    lastPoint = { 'x': x, 'y': y }
+                }
+            }
+            canvas.ontouchmove = function (aaa) {
+                var x = aaa.touches[0].clientX
+                var y = aaa.touches[0].clientY
+                if (!using) { return }
+                if (eraserEnabled) {
+                    context.clearRect(x - 5, y - 5, 10, 10)
+                } else {
+                    var newPoint = { 'x': x, 'y': y }
+                    // drawCircle(x, y, 1)
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+                    lastPoint = newPoint
+                }
+            }
+            canvas.ontouchend = function () {
+                using = false
+            }
+        } else {
+            //非触屏
+            canvas.onmousedown = function (aaa) {
+                var x = aaa.clientX
+                var y = aaa.clientY
+                using = true
+                if (eraserEnabled) {
+                    context.clearRect(x - 5, y - 5, 10, 10)
+                } else {
+                    lastPoint = { 'x': x, 'y': y }
+                }
+            }
+            canvas.onmousemove = function (aaa) {
+                var x = aaa.clientX
+                var y = aaa.clientY
+                if (!using) { return }
+                if (eraserEnabled) {
+                    context.clearRect(x - 5, y - 5, 10, 10)
+                } else {
+                    var newPoint = { 'x': x, 'y': y }
+                    // drawCircle(x, y, 1)
+                    drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
+                    lastPoint = newPoint        //前后两个点连接后，结束时的点作为起始点，循环
+                }
+            }
+            canvas.onmouseup = function (aaa) {
+                using = false
             }
         }
-        canvas.onmousemove = function (aaa) {
-            var x = aaa.clientX
-            var y = aaa.clientY
-            if(!using){return}
-            if (eraserEnabled) {
-                context.clearRect(x - 5, y - 5, 10, 10)               
-            } else {
-                var newPoint = { 'x': x, 'y': y }
-                // drawCircle(x, y, 1)
-                drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
-                lastPoint = newPoint                
-            }
-        }
-        canvas.onmouseup = function (aaa) {
-            using = false
-        }
+
     }
     function drawCircle(x, y, radius) {
         context.beginPath()
@@ -70,6 +102,9 @@ window.onload = function () {
         context.closePath()
         context.lineWidth = 2
     }
+
+
+
 
 }
 
