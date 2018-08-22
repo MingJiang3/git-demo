@@ -31,7 +31,7 @@ $('.window').on('mouseenter',function(){
 })
 
 $('.window').on('mouseleave',function(){
-    var timeId = setTime()
+    timeId = setTime()
 })
 
 function activeButton($button){
@@ -41,7 +41,7 @@ function playSlide(index){
     buttonAll.eq(index).trigger('click')
 }
 function setTime(){
-    setInterval(() =>{
+        return setInterval(() =>{
         n += 1
         buttonAll.eq(n%size).trigger('click').addClass('red').siblings('.red').removeClass('red')
     },2000)
