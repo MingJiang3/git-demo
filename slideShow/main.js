@@ -13,14 +13,37 @@
 var buttonAll = $('#buttons > button')
 for (let i = 0; i < buttonAll.length; i++) {
     $(buttonAll[i]).on('click',function(x){
-        console.log(x)
         var index = $(x.currentTarget).index()
-        var n = index * -500
-        $('.images').css({transform: 'translate('+n+'px)'})
+        var p = index * -500
+        $('.images').css({transform: 'translateX('+p+'px)'})
+        n = index
+        activeButton(buttonAll.eq(p))
     })
-    
 }
+var n = 0;
+var size = buttonAll.length
+playSlide(n%size)
 
+var timeId = setTime()
 
+$('.window').on('mouseenter',function(){
+    window.clearInterval(timeId)
+})
 
+$('.window').on('mouseleave',function(){
+    var timeId = setTime()
+})
+
+function activeButton($button){
+    $button.addClass('red').siblings('.red').removeClass('red')
+}
+function playSlide(index){
+    buttonAll.eq(index).trigger('click')
+}
+function setTime(){
+    setInterval(() =>{
+        n += 1
+        buttonAll.eq(n%size).trigger('click').addClass('red').siblings('.red').removeClass('red')
+    },2000)
+}
 
