@@ -1,4 +1,4 @@
-    //初步
+//初步
 // setTimeout(() => {$('.images > img:nth-child(1)').css({transform: 'translateX(-100%)'})
 // $('.images > img:nth-child(2)').css({transform: 'translateX(-100%)'}) 
 // $('.images > img:nth-child(1)').one('transitionend',function(e){$(e.currentTarget).addClass('right').css({transform: 'none'})})  }, 2000);
@@ -9,7 +9,7 @@
 // $('.images > img:nth-child(1)').css({transform: 'translateX(-100%)'})   
 // $('.images > img:nth-child(3)').one('transitionend',function(e){$(e.currentTarget).addClass('right').css({transform: 'none'})})}, 6000);
 
-    //优化1
+//优化1
 // $('.images > img:nth-child(1)').addClass('current')
 // $('.images > img:nth-child(2)').addClass('enter')
 // $('.images > img:nth-child(3)').addClass('enter')
@@ -33,53 +33,65 @@
 //     n++
 // },2000)
 
-    // 优化2
+// 优化2
 let n
 init()
-setInterval(() =>{
-    makeLeave(getImage(n)).one('transitionend',function(e){
+let time = setInterval(() => {
+    makeLeave(getImage(n)).one('transitionend', function (e) {
         makeEnter($(e.currentTarget))
     })
-    makeCurrent(getImage(n+1))
+    makeCurrent(getImage(n + 1))
     n++
-},2000)
+}, 2000)
+
+//解决页面切换bug 
+document.addEventListener('visibilitychange', function (v) {
+    if (document.hidden) {
+        window.clearInterval(time)
+    } else {
+        time = setInterval(() => {
+            makeLeave(getImage(n)).one('transitionend', function (e) {
+                makeEnter($(e.currentTarget))
+            })
+            makeCurrent(getImage(n + 1))
+            n++
+        }, 2000)
+    }
+})
 
 
-
-
-
-function x(n){
+function x(n) {
     if (n > 3) {
-        n = n %3
+        n = n % 3
         if (n === 0) {
-            n =3
+            n = 3
         }
     }
-    return n 
+    return n
 }
 
-function getImage(n){
+function getImage(n) {
     return $(`.images > img:nth-child(${x(n)})`)
 }
 
-function init(){
-    n =1
+function init() {
+    n = 1
     $(`.images > img:nth-child(${n})`).addClass('current').siblings().addClass('enter')
 }
-function makeCurrent($node){
+function makeCurrent($node) {
     return $node.removeClass('leave enter').addClass('current')
 }
-function makeLeave($node){
+function makeLeave($node) {
     return $node.removeClass('current enter').addClass('leave')
 }
-function makeEnter($node){
+function makeEnter($node) {
     return $node.removeClass('leave current').addClass('enter')
 }
 
 
 
 
-    
+
 
 // setTimeout(() => {
 //     $('.images > img:nth-child(2)').removeClass('current').addClass('leave').one('transitionend',function(e){
