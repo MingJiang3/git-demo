@@ -11,16 +11,11 @@
     width: 100%;
     transition: all 1s;
 }
-.images > img.right{
-    position: absolute;
-    top: 0;
-    left: 100%;
-}
 .images > img:nth-child(1){
     position: absolute;
     top: 0;
     left: 0;
-
+    
 }
 .images > img:nth-child(2){
     position: absolute;
@@ -28,6 +23,11 @@
     left: 100%;
 }
 .images > img:nth-child(3){
+    position: absolute;
+    top: 0;
+    left: 100%;
+}
+.images > img.right{
     position: absolute;
     top: 0;
     left: 100%;
