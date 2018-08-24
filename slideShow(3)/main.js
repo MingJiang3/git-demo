@@ -1,4 +1,4 @@
-$(bt1).on('click', function () {
+$('#bt1').on('click', function () {
     console.log('1')
     $('.images').css({ transform: 'translateX(0px)' })
 })

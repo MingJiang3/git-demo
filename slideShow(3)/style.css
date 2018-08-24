@@ -1,7 +1,6 @@
 body{
     background: #f2f2f2;
 }
-
 .window{
     width: 850px;
     height: 450px;
@@ -11,20 +10,13 @@ body{
     align-content: center;
 }
 .images{
+    align-items: flex-start;
     display: flex;
-    /* transition: all 0.5s; */
+    transition: all 0.5s;
 }
 .select{
     width: 850px; 
     border: 1px solid #d9d9d9;
     margin: -21px auto;
 }
-/* .p1{
-    transform: translateX(0)
-}
-.p2{
-    transform: translateX(-850px)
-}
-.p3{
-    transform: translateX(-1700px)
-} */
+
