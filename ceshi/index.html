@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+    <style>
+        
+        #div1{
+            width:100px; 
+            height:100px; 
+            background-color:gray;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <input type="button" value="打开" id="bt" onclick="if(this.value=='打开') {this.value='关闭';document.getElementById('div1').style.display='none';} else {this.value='打开';document.getElementById('div1').style.display='block';}"/>
+        <div id="div1"></div>
+    </div>
+    <script>
+        
+        
+
+    </script>
+</body>
+
+</html>
