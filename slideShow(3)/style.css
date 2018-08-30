@@ -12,39 +12,22 @@ ul,li{
     border: 1px solid #d9d9d9;
     align-content: center;
     margin-top: 60px;
-
-}
+    border-radius: 3px;
+ }
 .images{
     align-items: flex-start;
     display: flex;
-    transition: all 0.5s;
-    width: 2760px;
-}
-.images>img{
-    /* border: 1px solid red; */
+    transition: all 0.7s;
+    width: 4600px;
 }
 .select{
     width: 920px; 
+    /* height: 44px; */
     border: 1px solid #d9d9d9;
-    margin: -27px auto;
-    background: #ececec;
-    border-radius: 10px;
-}
-.bt{
+    margin: 0 auto;
+ }
+ .bts{
     text-align: center;
-    margin: -10px 20px;
-    padding-bottom: 0px;
+    display: flex;
+    justify-content: center;
 }
-.bt>img{
-   
-    
-}
-#bt1,#bt2,#bt3{
-    border: 1px solid red;
-    padding: 9px 17px;
-    margin: 0 -1px;
-}
-#bt1{
-    padding: 5px 13px;
-}
-
