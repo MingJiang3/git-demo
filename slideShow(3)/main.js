@@ -6,9 +6,6 @@ makeFakeImage()
 $slides.css({ transform: 'translateX(-920px)' })
 bindEvents()
 
-
-
-
 let timer = setInterval(function(){
     goToSlide(current+1)
   },4000)
@@ -19,7 +16,6 @@ let timer = setInterval(function(){
       goToSlide(current+1)
     },4000)
   })
-
 function bindEvents() {
     $('.bts').on('click', 'div', function (e) {
         let $button = $(e.currentTarget)
