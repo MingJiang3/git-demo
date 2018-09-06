@@ -23,9 +23,7 @@
     //2、生成键盘
     for (var index = 0; index < keys['length']; index = index + 1) {
         var div1 = tag('div', { className: 'row' })
-
         keybord.appendChild(div1)
-
         var row = keys[index]
         for (var index2 = 0; index2 < row['length']; index2 = index2 + 1) {
             var span = tag('span', { className: 'text' })
