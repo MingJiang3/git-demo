@@ -26,19 +26,22 @@ html{
     color: #dd4a68;
 }
 /*加个3D效果看看*/
+#code{
+    transform-origin: bottom right 60px;
+}
 `
 var n = 0
 var timer = setInterval(()=>{
     n++
     code.innerHTML = result.substring(0,n)
-    code.innerHTML = Prism.highlight(code.innerHTML,Prism.language.css)
+    code.innerHTML = Prism.highlight(code.innerHTML, Prism.languages.css)
     styleTag.innerHTML = result.substring(0,n)
     if (n >= result.length) {
         window.clearInterval(timer)
         fn2()
         fn3()
     }
-},50)
+},20)
 
 function fn2(){
     var paper = document.createElement('div')
