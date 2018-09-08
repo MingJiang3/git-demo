@@ -3,12 +3,11 @@ function css(prefix,code,fn){
     let n = 0
     let id = setInterval(()=>{
         n += 1
-        domCode.innerHTML = Prism.highlight(prefix + code.substring(0,n),Prism.languages.css);
+        domCode.innerHTML = Prism.highlightPrism.highlight(prefix + code.substring(0, n), Prism.languages.css);
         styleTag.innerHTML = prefix + code.substring(0,n)
         domCode.scrollTop = domCode.scrollHeight
         if (n >= code.length) {
             window.clearInterval(id)
-            console.log(1)
             fn && fn.call()
         }
     },10)
@@ -17,14 +16,11 @@ function markdown(markdowns,fn){
     let domPaper = document.querySelector('#paper>.content')
     let n = 0
     let id = setInterval(()=>{
-        console.log(2)
         n += 1
         domPaper.innerHTML = markdowns.substring(0,n)
-        console.log(3)
         domPaper.scrollTop = domPaper.scrollHeight
         if (n >= markdowns.length) {
             window.clearInterval(id)
-            console.log(4)
             fn && fn.call()
         }
     },50)
@@ -39,7 +35,7 @@ function creatPaper(fn){
     fn && fn.call()
 }
 function markdownToHtml(fn){
-    console.log(5)
+    console.log(marked)
     var div = document.createElement('div')
     div.className = 'html markdown-body'
     div.innerHTML = marked(md)
