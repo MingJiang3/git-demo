@@ -6,8 +6,9 @@ function css(prefix,code,fn){
         domCode.innerHTML = Prism.highlight(prefix + code.substring(0,n),Prism.languages.css);
         styleTag.innerHTML = prefix + code.substring(0,n)
         domCode.scrollTop = domCode.scrollHeight
-        if (n>code.lenght) {
+        if (n >= code.length) {
             window.clearInterval(id)
+            console.log(1)
             fn && fn.call()
         }
     },10)
@@ -16,11 +17,14 @@ function markdown(markdowns,fn){
     let domPaper = document.querySelector('#paper>.content')
     let n = 0
     let id = setInterval(()=>{
+        console.log(2)
         n += 1
         domPaper.innerHTML = markdowns.substring(0,n)
+        console.log(3)
         domPaper.scrollTop = domPaper.scrollHeight
-        if (n >= markdowns.lenght) {
+        if (n >= markdowns.length) {
             window.clearInterval(id)
+            console.log(4)
             fn && fn.call()
         }
     },50)
@@ -35,9 +39,11 @@ function creatPaper(fn){
     fn && fn.call()
 }
 function markdownToHtml(fn){
+    console.log(5)
     var div = document.createElement('div')
     div.className = 'html markdown-body'
     div.innerHTML = marked(md)
+    console.log(6)
     let mdContainer = document.querySelector('#paper > .content')
     mdContainer.replaceWith(div)
     fn && fn.call()
@@ -88,7 +94,7 @@ html{
 }
 `
 var result2 = `
-/* 接下来用marked的库
+/* 接下来用marked的库 marked.js
  * 把 Markdown 转成 HTML
  */
 `
@@ -120,12 +126,12 @@ let result3 = `
 
 css('',result1,creatPaper(()=>{
         markdown(md,()=>{
-            css(result1,result2,
+            css(result1,result2,()=>{
                 markdownToHtml(()=>{
                     css(result1+result2,result3,()=>{
                     })
                 })
-            )
+            })
         })
     })
 )
