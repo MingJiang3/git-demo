@@ -38,6 +38,7 @@ function markdownToHtml(fn){
     console.log(marked)
     var div = document.createElement('div')
     div.className = 'html markdown-body'
+    console.log(Prism)
     div.innerHTML = marked(md)
     console.log(6)
     let mdContainer = document.querySelector('#paper > .content')
@@ -90,17 +91,18 @@ html{
 }
 `
 var result2 = `
-/* 接下来用marked的库 marked.js
+/* 接下来用marked的库 
  * 把 Markdown 转成 HTML
  */
 `
+
+
 var md = `
 # 自我介绍
 我是 李名江
-1995 年 1 月出生
+1995 年 1 月出生<br>
 毕业于xxx
-自学前端半年
-希望应聘前端开发岗位
+<&nbsp>申请应聘前端开发岗位
 # 技能介绍
 熟悉 JavaScript CSS
 # 项目介绍
@@ -118,6 +120,7 @@ let result3 = `
 *一份简历完成了
 *Thanks♪(･ω･)ﾉ
 */
+#code{transform-origin: top left;transform: rotate(15deg);}
 `
 
 css('',result1,creatPaper(()=>{
