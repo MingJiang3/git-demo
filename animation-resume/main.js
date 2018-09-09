@@ -3,7 +3,7 @@ function css(prefix,code,fn){
     let n = 0
     let id = setInterval(()=>{
         n += 1
-        domCode.innerHTML = Prism.highlightPrism.highlight(prefix + code.substring(0, n), Prism.languages.css);
+        domCode.innerHTML = Prism.highlight(prefix + code.substring(0, n), Prism.languages.css);
         styleTag.innerHTML = prefix + code.substring(0,n)
         domCode.scrollTop = domCode.scrollHeight
         if (n >= code.length) {
