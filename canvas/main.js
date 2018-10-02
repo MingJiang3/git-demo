@@ -1,7 +1,7 @@
 window.onload = function () {
-    document.body.ontouchstart = function(screenRoll){
-        screenRoll.preventDefault()
-    }
+    // document.body.ontouchstart = function(screenRoll){
+    //     screenRoll.preventDefault()
+    // }
     var yyy = document.getElementById('xxx');
     var context = yyy.getContext('2d');
     autosetCanvasSize(yyy)
