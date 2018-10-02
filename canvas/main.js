@@ -27,6 +27,7 @@ window.onload = function () {
         green.classList.remove('active')
         blue.classList.remove('active')
         red.classList.remove('active')
+        yellow.classList.remove('active')
     }
     red.onclick = function(){
         context.fillStyle = 'red'
@@ -35,6 +36,7 @@ window.onload = function () {
         green.classList.remove('active')
         blue.classList.remove('active')
         black.classList.remove('active')
+        yellow.classList.remove('active')
     }
     green.onclick = function(){
         context.fillStyle = 'green'
@@ -43,6 +45,7 @@ window.onload = function () {
         red.classList.remove('active')
         blue.classList.remove('active')
         black.classList.remove('active')
+        yellow.classList.remove('active')
     }
     blue.onclick = function(){
         context.fillStyle = 'blue'
@@ -51,8 +54,19 @@ window.onload = function () {
         green.classList.remove('active')
         red.classList.remove('active')
         black.classList.remove('active')
+        yellow.classList.remove('active')
+    }
+    yellow.onclick = function(){
+        context.fillStyle = 'yellow'
+        context.strokeStyle = 'yellow'
+        yellow.classList.add('active')
+        green.classList.remove('active')
+        red.classList.remove('active')
+        black.classList.remove('active')
+        blue.classList.remove('active')
     }
     //画笔粗细
+    var lineWidth
     thin.onclick = function(){
         lineWidth = 3
     }
@@ -97,6 +111,7 @@ window.onload = function () {
                 using = true
                 if (eraserEnabled) {
                     context.clearRect(x - 5, y - 5, 10, 10)
+                    console.log('2')
                 } else {
                     lastPoint = { 'x': x, 'y': y }
                 }
@@ -104,6 +119,7 @@ window.onload = function () {
             canvas.ontouchmove = function (aaa) {
                 var x = aaa.touches[0].clientX
                 var y = aaa.touches[0].clientY
+                console.log('4')
                 if (!using) { return }
                 if (eraserEnabled) {
                     context.clearRect(x - 5, y - 5, 10, 10)
@@ -112,6 +128,7 @@ window.onload = function () {
                     // drawCircle(x, y, 1)
                     drawLine(lastPoint.x, lastPoint.y, newPoint.x, newPoint.y)
                     lastPoint = newPoint
+                    console.log('5')
                 }
             }
             canvas.ontouchend = function () {
@@ -122,16 +139,25 @@ window.onload = function () {
             canvas.onmousedown = function (aaa) {
                 var x = aaa.clientX
                 var y = aaa.clientY
+                console.log(x)
                 using = true
+                console.log('4444444')
+
                 if (eraserEnabled) {
                     context.clearRect(x - 5, y - 5, 10, 10)
+                    console.log('5555555555')
+
                 } else {
                     lastPoint = { 'x': x, 'y': y }
+                    console.log('6666666666')
+
                 }
             }
             canvas.onmousemove = function (aaa) {
                 var x = aaa.clientX
                 var y = aaa.clientY
+                console.log(111111111)
+
                 if (!using) { return }
                 if (eraserEnabled) {
                     context.clearRect(x - 5, y - 5, 10, 10)
@@ -149,17 +175,24 @@ window.onload = function () {
 
     }
     function drawCircle(x, y, radius) {
+        console.log('111111111')
         context.beginPath()
+        console.log('2222222222')
         context.arc(x, y, radius, 0, Math.PI * 2);
+        console.log('3333333333')
         context.fill()
+        console.log('4444444444')
     }
     function drawLine(x1, y1, x2, y2) {         //用线把前后两个点链接起来
         context.beginPath();
         context.moveTo(x1, y1)       //起点
         context.lineWidth = lineWidth
+        console.log(context)
         context.lineTo(x2, y2)       //终点
         context.stroke();
         context.closePath()
+        console.log(333333333333)
+
     }
 }
 
