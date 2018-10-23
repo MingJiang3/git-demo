@@ -111,7 +111,6 @@ window.onload = function () {
                 using = true
                 if (eraserEnabled) {
                     context.clearRect(x - 5, y - 5, 10, 10)
-                    console.log('2')
                 } else {
                     lastPoint = { 'x': x, 'y': y }
                 }
@@ -172,7 +171,6 @@ window.onload = function () {
         context.beginPath();
         context.moveTo(x1, y1)       //起点
         context.lineWidth = lineWidth
-        console.log(context)
         context.lineTo(x2, y2)       //终点
         context.stroke();
         context.closePath()
