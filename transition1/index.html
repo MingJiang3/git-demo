@@ -8,9 +8,9 @@
   <body>
     <div id="app">
       <fullPage :pages="5" :bg-color="bg-colorc olor">
-        <div slot="">
-          <page1></page1>
-        </div>
+        <template scope="props" slot="slot2">
+          <page1 :state="prosp.state"></page1>
+        </template>
       </fullPage>  
     </div>
     <!-- built files will be auto injected -->

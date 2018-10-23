@@ -10,5 +10,5 @@ new Vue({
   data:{
     bgColor:['#c90','#c40','#c06','#c67']
   },
-  components:{fullPage}
+  components:{fullPage,page1}
 })
